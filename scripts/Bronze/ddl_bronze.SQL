@@ -3,8 +3,7 @@
 Create Bronze table
 =============================================================
 Script Purpose:
-    This script creates table in the Bronze schema, drop exisiting tables if they already exist
-    It also creates three schemas/databases: bronze, silver, and gold.
+    This script creates table in the Bronze schema, drop exisiting tables if they already exist.
     Running this script to re-define the ddl structure of 'Bronze' tables.
     
 =============================================================
