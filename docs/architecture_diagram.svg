@@ -1,0 +1,64 @@
+<svg viewBox="0 0 1160 460" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5f5e5a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1160" height="460" fill="#ffffff"/>
+
+  <text x="580" y="34" text-anchor="middle" font-size="20" font-weight="600" fill="#2c2c2a">SQL Data Warehouse — Architecture</text>
+
+  <!-- Sources -->
+  <rect x="30" y="90" width="180" height="70" rx="8" fill="#eeedfe" stroke="#534ab7" stroke-width="1.5"/>
+  <text x="120" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#26215c">source_crm</text>
+  <text x="120" y="136" text-anchor="middle" font-size="11" fill="#3c3489">cust_info, prd_info,</text>
+  <text x="120" y="150" text-anchor="middle" font-size="11" fill="#3c3489">sales_details (.csv)</text>
+
+  <rect x="30" y="300" width="180" height="70" rx="8" fill="#eeedfe" stroke="#534ab7" stroke-width="1.5"/>
+  <text x="120" y="328" text-anchor="middle" font-size="13" font-weight="600" fill="#26215c">source_erp</text>
+  <text x="120" y="346" text-anchor="middle" font-size="11" fill="#3c3489">CUST_AZ12, LOC_A101,</text>
+  <text x="120" y="360" text-anchor="middle" font-size="11" fill="#3c3489">PX_CAT_G1V2 (.csv)</text>
+
+  <!-- Bronze -->
+  <rect x="290" y="195" width="180" height="80" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="1.5"/>
+  <text x="380" y="222" text-anchor="middle" font-size="14" font-weight="600" fill="#4a1b0c">Bronze</text>
+  <text x="380" y="240" text-anchor="middle" font-size="11" fill="#712b13">raw 1:1 copy,</text>
+  <text x="380" y="254" text-anchor="middle" font-size="11" fill="#712b13">LOAD DATA INFILE,</text>
+  <text x="380" y="268" text-anchor="middle" font-size="11" fill="#712b13">no cleaning</text>
+
+  <!-- Silver -->
+  <rect x="540" y="195" width="180" height="80" rx="8" fill="#e1f5ee" stroke="#0f6e56" stroke-width="1.5"/>
+  <text x="630" y="222" text-anchor="middle" font-size="14" font-weight="600" fill="#04342c">Silver</text>
+  <text x="630" y="240" text-anchor="middle" font-size="11" fill="#085041">dedupe, standardize,</text>
+  <text x="630" y="254" text-anchor="middle" font-size="11" fill="#085041">type-correct,</text>
+  <text x="630" y="268" text-anchor="middle" font-size="11" fill="#085041">CRM/ERP key matching</text>
+
+  <!-- Gold -->
+  <rect x="790" y="195" width="180" height="80" rx="8" fill="#faeeda" stroke="#854f0b" stroke-width="1.5"/>
+  <text x="880" y="222" text-anchor="middle" font-size="14" font-weight="600" fill="#412402">Gold</text>
+  <text x="880" y="240" text-anchor="middle" font-size="11" fill="#633806">star schema views:</text>
+  <text x="880" y="254" text-anchor="middle" font-size="11" fill="#633806">dim_customers,</text>
+  <text x="880" y="268" text-anchor="middle" font-size="11" fill="#633806">dim_products, fact_sales</text>
+
+  <!-- Analytics -->
+  <rect x="1000" y="205" width="140" height="60" rx="8" fill="#fbeaf0" stroke="#993556" stroke-width="1.5"/>
+  <text x="1070" y="230" text-anchor="middle" font-size="13" font-weight="600" fill="#4b1528">Analytics</text>
+  <text x="1070" y="248" text-anchor="middle" font-size="11" fill="#72243e">reports, trends</text>
+
+  <!-- Arrows -->
+  <path d="M210,125 L340,220" stroke="#5f5e5a" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M210,335 L340,250" stroke="#5f5e5a" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M470,235 L535,235" stroke="#5f5e5a" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M720,235 L785,235" stroke="#5f5e5a" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M970,235 L995,235" stroke="#5f5e5a" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Legend / flow labels -->
+  <text x="120" y="405" text-anchor="middle" font-size="11" fill="#5f5e5a">6 CSV files</text>
+  <text x="380" y="405" text-anchor="middle" font-size="11" fill="#5f5e5a">6 raw tables</text>
+  <text x="630" y="405" text-anchor="middle" font-size="11" fill="#5f5e5a">6 clean tables</text>
+  <text x="880" y="405" text-anchor="middle" font-size="11" fill="#5f5e5a">3 views (star schema)</text>
+  <text x="1070" y="405" text-anchor="middle" font-size="11" fill="#5f5e5a">7 scripts</text>
+
+  <text x="580" y="440" text-anchor="middle" font-size="11" fill="#888780">MySQL 8 — each layer is its own database (bronze / silver / gold)</text>
+</svg>
